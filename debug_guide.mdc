@@ -1,0 +1,116 @@
+---
+alwaysApply: false
+---
+---
+description: Comprehensive guide for investigating, debugging, and fixing issues
+globs:
+alwaysApply: false
+---
+ 
+# Debugging RULES that MUST be followed EXACTLY
+ 
+## Context
+- Used when debugging any code issues
+- Used when investigating runtime errors, build failures, or unexpected behavior
+- Used when implementing fixes to ensure comprehensive problem-solving
+ 
+## Critical Rules
+ 
+### Guidelines
+ 
+- ALWAYS handle ONLY one issue, bug, or failing test at a time
+- ALWAYS verify that you have fixed that issue before moving on
+- YOU HAVE PERMISSION to run tests and build the app
+- You MUST complete all deebugging phases
+ 
+### Phase 1: Gather Info on Error
+ 
+- ALWAYS attempt to reproduce the issue with tests and/or a full build
+- ALWAYS add new debugging print statements
+   - Ensure they will print in a regular IDE terminal
+- ALWAYS document exact error messages and stack traces
+- Move to Phase 2
+ 
+### Phase 2: Review Project Context
+ 
+- ALWAYS assess recent changes to identify what might have recently broken
+- ALWAYS assess related files to identify if functionality already exists to fix it
+- ALWAYS consult arch.md to identify relevant project architecture
+- ALWAYS consult RulesOverview.md to identify technical requirements
+- ALWAYS attempt to locate information about relevant schemas (APIs, databases, etc) if relevant
+- ALWAYS read the comments in all involved files
+- Move to Phase 3
+ 
+### Phase 3: Assess Potential Causes
+ 
+- List all possible proximal and root causes for the issue
+- List evidence for and against each hypothesis
+- Create and perform minimally risky/invasive tests for each hypothesis
+- Identify most likely root cause
+- Move to Phase 4
+ 
+### Phase 4: Design Solutions
+ 
+1. Generate Multiple Solutions:
+   - List at least 2-3 possible fixes for the root cause
+   - List which lines, files, and structures would need to change:
+      - To fix the issue
+      - To avoid creating new issues
+      - To preserve other functionality
+      - To keep the codebase and architecture consistent
+ 
+ 
+2. Evaluate Each Solution:
+   - Rate each solution on:
+      - Likelihood of working
+      - Elegance
+      - Destructiveness
+      - Modularit
+      - Risk of breaking functionality
+      - Compliance with architectural Standards
+      - Compliance with language best practices
+      - Compliance with Cursor rules
+      - Maintenance burden
+      - Performance burden
+      - Security risk
+   - Perform a basic sanity check
+      - e.g. if you want to create an entirely new project or demand major new permissions just to solve a trivial issue, it's probably a bad idea
+ 
+3. Choose a Solution
+   - Pick the best solution overall using senior software engineer judgement
+   - Move to Phase 5
+ 
+### Phase 5: Implement Solution
+ 
+1. Before Implementing:
+   - Document the chosen approach
+   - List required changes
+   - Identify test cases needed
+   - Note potential side effects
+   - Decide whether to proceed:
+      - If solution has low elegance, high destructiveness, or hisk risk of breaking functionality, STOP IMMEDIATELY and ask user permission to continue
+      - Otherwise, continue
+ 
+2. During Implementation:
+   - Add comprehensive comments
+   - Include debug logs if helpful
+   - Update tests
+   - Follow style guides
+ 
+3. Move to Phase 6
+ 
+### Phase 6: Test
+ 
+1. Run full test suite
+2. Ensure app still builds
+3. ONLY proceed to next phrase if either:
+   - Issue is fixed, or
+   - Further edits are needed but require user input or permission (e.g. they are major architectural changes)
+ 
+### Phase 7: Communicate
+ 
+- Summarise your debugging process, key considerations, and decisions to the user
+- Inform user if any architectural, rule, or other files may need to be updated
+- Brief the user on what functionality could have been affected and if it's worth testing
+- Update any relevant documentation
+- Remove or suppress debug statements

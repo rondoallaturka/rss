@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latinometrics RSS Widget</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'lora': ['Lora', 'serif'],
+              'lexend': ['Lexend Deca', 'sans-serif'],
+            },
+            colors: {
+              'latinometrics': {
+                'primary': '#384F7F',
+                'secondary': '#FCF5ED',
+                'card': '#EFEAE4',
+                'text-primary': '#FCF5ED',
+                'text-secondary': '#030712',
+                'background': '#FCF5ED',
+                'text-background': '#222222',
+              }
+            },
+            animation: {
+              'shimmer': 'shimmer 1.5s infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body>
+    <div id="latinometrics-articles" class="font-lexend max-w-7xl mx-auto p-5 bg-latinometrics-secondary min-h-screen" role="region" aria-label="Latest Articles">
+        <!-- Loading State -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="lm-loading-state">
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+            <div class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] aspect-square"></div>
+                <div class="p-5 flex flex-col flex-1">
+                    <div class="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-3"></div>
+                    <div class="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-2"></div>
+                    <div class="h-4 w-3/5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded mb-4"></div>
+                    <div class="h-11 w-32 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] rounded-lg mt-auto"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Error State (Hidden by default) -->
+        <div class="text-center py-20 px-5" id="lm-error-state" style="display: none;">
+            <div class="text-6xl mb-4 opacity-50">📰</div>
+            <div class="text-lg text-gray-600 mb-4">Unable to load articles at this time</div>
+            <button class="bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px]" onclick="loadArticles()">Try Again</button>
+        </div>
+        
+        <!-- Articles Container (Hidden by default) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="lm-articles-container" style="display: none;"></div>
+    </div>
+
+    <script>
+        // RSS Widget JavaScript - Production Version
+        (function() {
+            'use strict';
+            
+            // Configuration
+            const CONFIG = {
+                apiUrl: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.beehiiv.com%2Ffeeds%2Fon4ViAZgs5.xml',
+                cacheKey: 'latinometrics_rss_cache',
+                cacheDuration: 30 * 60 * 1000, // 30 minutes
+                maxArticles: 6,
+                maxDescriptionLength: 120
+            };
+            
+            // DOM Elements
+            const elements = {
+                loadingState: document.getElementById('lm-loading-state'),
+                errorState: document.getElementById('lm-error-state'),
+                articlesContainer: document.getElementById('lm-articles-container')
+            };
+            
+            // Utility Functions
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+            
+            function truncateText(text, maxLength) {
+                if (!text || text.length <= maxLength) return text;
+                return text.substring(0, maxLength).trim() + '...';
+            }
+            
+            function getCachedData() {
+                try {
+                    const cached = localStorage.getItem(CONFIG.cacheKey);
+                    if (!cached) return null;
+                    
+                    const { data, timestamp } = JSON.parse(cached);
+                    const now = Date.now();
+                    
+                    if (now - timestamp < CONFIG.cacheDuration) {
+                        return data;
+                    }
+                    
+                    localStorage.removeItem(CONFIG.cacheKey);
+                    return null;
+                } catch (error) {
+                    console.warn('Cache read error:', error);
+                    return null;
+                }
+            }
+            
+            function setCachedData(data) {
+                try {
+                    const cacheData = {
+                        data: data,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem(CONFIG.cacheKey, JSON.stringify(cacheData));
+                } catch (error) {
+                    console.warn('Cache write error:', error);
+                }
+            }
+            
+            function showLoading() {
+                elements.loadingState.style.display = 'grid';
+                elements.errorState.style.display = 'none';
+                elements.articlesContainer.style.display = 'none';
+            }
+            
+            function showError() {
+                elements.loadingState.style.display = 'none';
+                elements.errorState.style.display = 'block';
+                elements.articlesContainer.style.display = 'none';
+            }
+            
+            function showArticles() {
+                elements.loadingState.style.display = 'none';
+                elements.errorState.style.display = 'none';
+                elements.articlesContainer.style.display = 'grid';
+            }
+            
+            function createArticleCard(article) {
+                const card = document.createElement('article');
+                card.className = 'bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full';
+                card.setAttribute('role', 'article');
+
+                // Determine the best image to use
+                let imageUrl = null;
+                let imageClass = 'w-full h-48 object-cover aspect-video';
+                let isPremiumContent = false;
+                
+                // Check if it's a Domingo Brief article (has enclosure image)
+                if (article.enclosure && article.enclosure.link) {
+                    imageUrl = article.enclosure.link;
+                    // Domingo Brief images are typically 1:1 aspect ratio (charts/artworks)
+                    imageClass = 'w-full h-48 object-cover aspect-square';
+                } else if (article.thumbnail) {
+                    // Check if this is a generic image (paywalled content)
+                    const genericImagePatterns = [
+                        /Domingo_Brief_Cover\.png/,  // Newsletter header
+                        /\/image\.png\?/             // Generic placeholder
+                    ];
+                    const isGenericImage = genericImagePatterns.some(pattern => pattern.test(article.thumbnail));
+                    
+                    if (isGenericImage) {
+                        // This is paywalled content - create premium overlay
+                        isPremiumContent = true;
+                        imageUrl = null;
+                    } else {
+                        imageUrl = article.thumbnail;
+                        // Regular articles use the thumbnail (which is the chart/artwork)
+                        imageClass = 'w-full h-48 object-cover aspect-square';
+                    }
+                }
+                
+                // Fallback image if no image is available
+                const fallbackImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2Ugbm90IGF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
+
+                if (isPremiumContent) {
+                    // Create premium content overlay
+                    const premiumOverlay = document.createElement('div');
+                    premiumOverlay.className = 'w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square';
+                    
+                    // Add subtle pattern overlay
+                    const patternOverlay = document.createElement('div');
+                    patternOverlay.className = 'absolute inset-0 opacity-10';
+                    patternOverlay.innerHTML = `
+                        <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100" height="100" fill="url(#grid)" />
+                        </svg>
+                    `;
+                    
+                    // Premium content icon and text
+                    const premiumContent = document.createElement('div');
+                    premiumContent.className = 'text-center text-white z-10 relative';
+                    
+                    const premiumIcon = document.createElement('div');
+                    premiumIcon.className = 'text-4xl mb-3';
+                    premiumIcon.innerHTML = '🔒';
+                    
+                    const premiumTitle = document.createElement('h3');
+                    premiumTitle.className = 'text-lg font-semibold mb-2';
+                    premiumTitle.textContent = 'Premium Content';
+                    
+                    const premiumSubtitle = document.createElement('p');
+                    premiumSubtitle.className = 'text-sm opacity-90';
+                    premiumSubtitle.textContent = 'Unlock exclusive charts & insights';
+                    
+                    premiumContent.appendChild(premiumIcon);
+                    premiumContent.appendChild(premiumTitle);
+                    premiumContent.appendChild(premiumSubtitle);
+                    
+                    premiumOverlay.appendChild(patternOverlay);
+                    premiumOverlay.appendChild(premiumContent);
+                    
+                    card.appendChild(premiumOverlay);
+                } else {
+                    // Regular image
+                    const thumbnail = document.createElement('img');
+                    thumbnail.className = imageClass;
+                    thumbnail.src = imageUrl || fallbackImage;
+                    thumbnail.alt = article.title || 'Article thumbnail';
+                    thumbnail.loading = 'lazy';
+                    card.appendChild(thumbnail);
+                }
+
+                const content = document.createElement('div');
+                content.className = 'p-5 flex flex-col flex-1';
+
+                const title = document.createElement('h3');
+                title.className = 'font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2';
+                title.textContent = article.title || 'Untitled Article';
+
+                const date = document.createElement('p');
+                date.className = 'text-sm text-gray-600 mb-3 font-normal';
+                date.textContent = formatDate(article.pubDate);
+
+                const description = document.createElement('p');
+                description.className = 'text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3';
+                description.textContent = truncateText(article.description, CONFIG.maxDescriptionLength);
+
+                // Different button for premium content
+                const readMoreBtn = document.createElement('a');
+                if (isPremiumContent) {
+                    readMoreBtn.className = 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-start shadow-lg hover:shadow-xl';
+                    readMoreBtn.textContent = 'Subscribe to Read';
+                    readMoreBtn.href = 'https://mail.latinometrics.com/upgrade';
+                } else {
+                    readMoreBtn.className = 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-start';
+                    readMoreBtn.textContent = 'Read More';
+                    readMoreBtn.href = article.link || '#';
+                }
+                readMoreBtn.target = '_blank';
+                readMoreBtn.rel = 'noopener noreferrer';
+                readMoreBtn.setAttribute('aria-label', isPremiumContent ? 'Subscribe to read premium content' : `Read full article: ${article.title}`);
+
+                content.appendChild(title);
+                content.appendChild(date);
+                content.appendChild(description);
+                content.appendChild(readMoreBtn);
+
+                card.appendChild(content);
+
+                return card;
+            }
+            
+            function renderArticles(articles) {
+                elements.articlesContainer.innerHTML = '';
+                
+                const limitedArticles = articles.slice(0, CONFIG.maxArticles);
+                
+                limitedArticles.forEach(article => {
+                    const card = createArticleCard(article);
+                    elements.articlesContainer.appendChild(card);
+                });
+                
+                showArticles();
+            }
+            
+            async function fetchArticles() {
+                try {
+                    const response = await fetch(CONFIG.apiUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.status !== 'ok' || !data.items) {
+                        throw new Error('Invalid API response');
+                    }
+                    
+                    return data.items;
+                } catch (error) {
+                    console.error('API fetch error:', error);
+                    throw error;
+                }
+            }
+            
+            async function loadArticles() {
+                showLoading();
+                
+                try {
+                    // Check cache first
+                    let articles = getCachedData();
+                    
+                    if (!articles) {
+                        // Fetch from API
+                        articles = await fetchArticles();
+                        setCachedData(articles);
+                    }
+                    
+                    renderArticles(articles);
+                } catch (error) {
+                    console.error('Failed to load articles:', error);
+                    showError();
+                }
+            }
+            
+            // Initialize widget
+            function init() {
+                // Add global function for retry button
+                window.loadArticles = loadArticles;
+                
+                // Load articles on page load
+                loadArticles();
+            }
+            
+            // Start the widget when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html> 
