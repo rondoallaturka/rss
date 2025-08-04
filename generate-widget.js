@@ -36,6 +36,31 @@ const widgetTemplate = `<!DOCTYPE html>
                 'background': '#FCF5ED',
                 'text-background': '#222222',
               }
+            },
+            animation: {
+              'shimmer': 'shimmer 1.5s infinite',
+              'shimmer-gold': 'shimmer-gold 2s infinite',
+              'unlock-bounce': 'unlock-bounce 0.6s ease-out',
+              'premium-glow': 'premium-glow 0.3s ease-out forwards',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' }
+              },
+              'shimmer-gold': {
+                '0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' }
+              },
+              'unlock-bounce': {
+                '0%': { transform: 'scale(1) rotate(0deg)' },
+                '50%': { transform: 'scale(1.2) rotate(-10deg)' },
+                '100%': { transform: 'scale(1) rotate(0deg)' }
+              },
+              'premium-glow': {
+                '0%': { boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
+                '100%': { boxShadow: '0 25px 50px -12px rgba(234, 179, 8, 0.25)' }
+              }
             }
           }
         }
@@ -59,7 +84,9 @@ function generateArticleHTML(articles) {
         let isPremiumContent = false;
         
         if (article.enclosure && article.enclosure.link) {
-            imageHtml = `<img class="w-full h-48 object-cover aspect-square" src="${article.enclosure.link}" alt="${article.title}" loading="lazy">`;
+            imageHtml = `<a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-square" src="${article.enclosure.link}" alt="${article.title}" loading="lazy">
+                </a>`;
         } else if (article.thumbnail) {
             const genericImagePatterns = [
                 /Domingo_Brief_Cover\.png/,
@@ -69,8 +96,8 @@ function generateArticleHTML(articles) {
             
             if (isGenericImage) {
                 isPremiumContent = true;
-                imageHtml = `
-                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square">
+                imageHtml = `<a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 group cursor-pointer">
                         <div class="absolute inset-0 opacity-10">
                             <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -81,18 +108,28 @@ function generateArticleHTML(articles) {
                                 <rect width="100" height="100" fill="url(#grid)" />
                             </svg>
                         </div>
+                        <!-- Golden shimmer effect on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-gold bg-[length:200%_100%] transition-opacity duration-300"></div>
                         <div class="text-center text-white z-10 relative">
-                            <div class="text-4xl mb-3">🔒</div>
+                            <div class="text-4xl mb-3 transition-all duration-500 group-hover:animate-unlock-bounce">
+                                <span class="group-hover:hidden">🔒</span>
+                                <span class="hidden group-hover:inline">🔓</span>
+                            </div>
                             <h3 class="text-lg font-semibold mb-2">Premium Content</h3>
-                            <p class="text-sm opacity-90">Unlock exclusive charts & insights</p>
+                            <p class="text-sm opacity-90 transition-all duration-300">Unlock exclusive charts & insights</p>
                         </div>
-                    </div>`;
+                    </div>
+                </a>`;
             } else {
-                imageHtml = `<img class="w-full h-48 object-cover aspect-square" src="${article.thumbnail}" alt="${article.title}" loading="lazy">`;
+                imageHtml = `<a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-square" src="${article.thumbnail}" alt="${article.title}" loading="lazy">
+                </a>`;
             }
         } else {
             const fallbackImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2Ugbm90IGF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
-            imageHtml = `<img class="w-full h-48 object-cover aspect-video" src="${fallbackImage}" alt="Article thumbnail" loading="lazy">`;
+            imageHtml = `<a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-video" src="${fallbackImage}" alt="Article thumbnail" loading="lazy">
+                </a>`;
         }
         
         // Format date
@@ -111,8 +148,8 @@ function generateArticleHTML(articles) {
         const buttonHref = isPremiumContent ? 'https://mail.latinometrics.com/upgrade' : (article.link || '#');
         const buttonText = isPremiumContent ? 'Subscribe to Read' : 'Read More';
         const buttonClass = isPremiumContent 
-            ? 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-start shadow-lg hover:shadow-xl'
-            : 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-start';
+            ? 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-center shadow-lg hover:shadow-xl hover:shadow-yellow-500/25 hover:scale-105 transform'
+            : 'inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-center';
         
         return `
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">

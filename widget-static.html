@@ -30,6 +30,31 @@
                 'background': '#FCF5ED',
                 'text-background': '#222222',
               }
+            },
+            animation: {
+              'shimmer': 'shimmer 1.5s infinite',
+              'shimmer-gold': 'shimmer-gold 2s infinite',
+              'unlock-bounce': 'unlock-bounce 0.6s ease-out',
+              'premium-glow': 'premium-glow 0.3s ease-out forwards',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' }
+              },
+              'shimmer-gold': {
+                '0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' }
+              },
+              'unlock-bounce': {
+                '0%': { transform: 'scale(1) rotate(0deg)' },
+                '50%': { transform: 'scale(1.2) rotate(-10deg)' },
+                '100%': { transform: 'scale(1) rotate(0deg)' }
+              },
+              'premium-glow': {
+                '0%': { boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
+                '100%': { boxShadow: '0 25px 50px -12px rgba(234, 179, 8, 0.25)' }
+              }
             }
           }
         }
@@ -41,19 +66,21 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/ff2e3175-c42d-4e2b-9a38-69309175c741/image.png" alt="☀ Domingo Brief — Brazil’s Tariff Clash Heats Up" loading="lazy">
+                <a href="https://mail.latinometrics.com/p/domingo-brief-brazils-tariff-clash-heats-up" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/ff2e3175-c42d-4e2b-9a38-69309175c741/image.png" alt="☀ Domingo Brief — Brazil's Tariff Clash Heats Up" loading="lazy">
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">☀ Domingo Brief — Brazil’s Tariff Clash Heats Up</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Aug 3, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">Each Sunday, take two minutes to catch key stories and opportunities shaping Latin America.</p>
-                    <a href="https://mail.latinometrics.com/p/domingo-brief-brazils-tariff-clash-heats-up" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-start" aria-label="Read full article: ☀ Domingo Brief — Brazil’s Tariff Clash Heats Up">
+                    <a href="https://mail.latinometrics.com/p/domingo-brief-brazils-tariff-clash-heats-up" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-center" aria-label="Read full article: ☀ Domingo Brief — Brazil’s Tariff Clash Heats Up">
                         Read More
                     </a>
                 </div>
             </article>
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                
-                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square">
+                <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 group cursor-pointer">
                         <div class="absolute inset-0 opacity-10">
                             <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -64,24 +91,30 @@
                                 <rect width="100" height="100" fill="url(#grid)" />
                             </svg>
                         </div>
+                        <!-- Golden shimmer effect on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-gold bg-[length:200%_100%] transition-opacity duration-300"></div>
                         <div class="text-center text-white z-10 relative">
-                            <div class="text-4xl mb-3">🔒</div>
+                            <div class="text-4xl mb-3 transition-all duration-500 group-hover:animate-unlock-bounce">
+                                <span class="group-hover:hidden">🔒</span>
+                                <span class="hidden group-hover:inline">🔓</span>
+                            </div>
                             <h3 class="text-lg font-semibold mb-2">Premium Content</h3>
-                            <p class="text-sm opacity-90">Unlock exclusive charts & insights</p>
+                            <p class="text-sm opacity-90 transition-all duration-300">Unlock exclusive charts & insights</p>
                         </div>
                     </div>
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">🚗 Saving Lives</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Jul 31, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">The chart that shows 113K reasons to celebrate, and a country not to.</p>
-                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-start shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
+                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-center shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
                         Subscribe to Read
                     </a>
                 </div>
             </article>
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                
-                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square">
+                <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 group cursor-pointer">
                         <div class="absolute inset-0 opacity-10">
                             <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -92,35 +125,43 @@
                                 <rect width="100" height="100" fill="url(#grid)" />
                             </svg>
                         </div>
+                        <!-- Golden shimmer effect on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-gold bg-[length:200%_100%] transition-opacity duration-300"></div>
                         <div class="text-center text-white z-10 relative">
-                            <div class="text-4xl mb-3">🔒</div>
+                            <div class="text-4xl mb-3 transition-all duration-500 group-hover:animate-unlock-bounce">
+                                <span class="group-hover:hidden">🔒</span>
+                                <span class="hidden group-hover:inline">🔓</span>
+                            </div>
                             <h3 class="text-lg font-semibold mb-2">Premium Content</h3>
-                            <p class="text-sm opacity-90">Unlock exclusive charts & insights</p>
+                            <p class="text-sm opacity-90 transition-all duration-300">Unlock exclusive charts & insights</p>
                         </div>
                     </div>
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">🧬 Who Pays?</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Jul 29, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">Some countries tax what you earn. Others tax how you live.</p>
-                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-start shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
+                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-center shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
                         Subscribe to Read
                     </a>
                 </div>
             </article>
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/80385647-664c-4ac7-b26e-91e0425a5def/image.png" alt="☀ Domingo Brief — Illicit Gold Mining Takes a Hit" loading="lazy">
+                <a href="https://mail.latinometrics.com/p/domingo-brief-illicit-gold-mining-takes-a-hit" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/80385647-664c-4ac7-b26e-91e0425a5def/image.png" alt="☀ Domingo Brief — Illicit Gold Mining Takes a Hit" loading="lazy">
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">☀ Domingo Brief — Illicit Gold Mining Takes a Hit</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Jul 27, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">Each Sunday, take two minutes to catch key stories and opportunities shaping Latin America.</p>
-                    <a href="https://mail.latinometrics.com/p/domingo-brief-illicit-gold-mining-takes-a-hit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-start" aria-label="Read full article: ☀ Domingo Brief — Illicit Gold Mining Takes a Hit">
+                    <a href="https://mail.latinometrics.com/p/domingo-brief-illicit-gold-mining-takes-a-hit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-center" aria-label="Read full article: ☀ Domingo Brief — Illicit Gold Mining Takes a Hit">
                         Read More
                     </a>
                 </div>
             </article>
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                
-                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square">
+                <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 group cursor-pointer">
                         <div class="absolute inset-0 opacity-10">
                             <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -131,28 +172,36 @@
                                 <rect width="100" height="100" fill="url(#grid)" />
                             </svg>
                         </div>
+                        <!-- Golden shimmer effect on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-gold bg-[length:200%_100%] transition-opacity duration-300"></div>
                         <div class="text-center text-white z-10 relative">
-                            <div class="text-4xl mb-3">🔒</div>
+                            <div class="text-4xl mb-3 transition-all duration-500 group-hover:animate-unlock-bounce">
+                                <span class="group-hover:hidden">🔒</span>
+                                <span class="hidden group-hover:inline">🔓</span>
+                            </div>
                             <h3 class="text-lg font-semibold mb-2">Premium Content</h3>
-                            <p class="text-sm opacity-90">Unlock exclusive charts & insights</p>
+                            <p class="text-sm opacity-90 transition-all duration-300">Unlock exclusive charts & insights</p>
                         </div>
                     </div>
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">⚖️ Public Debt</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Jul 24, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">To what extent does your country rely on the USD to service its debt?</p>
-                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-start shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
+                    <a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-all duration-300 min-h-[44px] self-center shadow-lg hover:shadow-xl" aria-label="Subscribe to read premium content">
                         Subscribe to Read
                     </a>
                 </div>
             </article>
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
-                <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/cb52165d-5178-4501-b7d2-4831be679aa4/Jul_-_Top_VC_funding_rounds_H1_2025__30_de_junio___2_.png" alt="💸 Venture Capital" loading="lazy">
+                <a href="https://mail.latinometrics.com/p/venture-capital-babb" target="_blank" rel="noopener noreferrer" class="block">
+                    <img class="w-full h-48 object-cover aspect-square" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/cb52165d-5178-4501-b7d2-4831be679aa4/Jul_-_Top_VC_funding_rounds_H1_2025__30_de_junio___2_.png" alt="💸 Venture Capital" loading="lazy">
+                </a>
                 <div class="p-5 flex flex-col flex-1">
                     <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">💸 Venture Capital</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">Jul 22, 2025</p>
                     <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">Fintech is down, Mexico is up, and an island territory is this year's big winner so far.</p>
-                    <a href="https://mail.latinometrics.com/p/venture-capital-babb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-start" aria-label="Read full article: 💸 Venture Capital">
+                    <a href="https://mail.latinometrics.com/p/venture-capital-babb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-latinometrics-primary hover:bg-latinometrics-primary/90 text-latinometrics-text-primary font-medium py-3 px-6 rounded-lg transition-colors duration-300 min-h-[44px] self-center" aria-label="Read full article: 💸 Venture Capital">
                         Read More
                     </a>
                 </div>
