@@ -364,7 +364,7 @@
                 content.className = 'p-5 flex flex-col flex-1';
 
                 const title = document.createElement('h3');
-                title.className = 'font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2';
+                title.className = 'font-lora font-semibold text-xl leading-tight text-[#384F7F] mb-2 line-clamp-2';
                 title.textContent = article.title || 'Untitled Article';
 
                 const date = document.createElement('p');
@@ -372,7 +372,7 @@
                 date.textContent = formatDate(article.pubDate);
 
                 const description = document.createElement('p');
-                description.className = 'text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3';
+                description.className = 'text-sm leading-relaxed text-[#222E49] mb-4 flex-1 line-clamp-3';
                 description.textContent = truncateText(article.description, CONFIG.maxDescriptionLength);
 
                 // Different button for premium content
