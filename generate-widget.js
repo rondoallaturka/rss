@@ -126,10 +126,46 @@ function generateArticleHTML(articles) {
                 </a>`;
             }
         } else {
-            const fallbackImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2Ugbm90IGF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
-            imageHtml = `<a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="block">
-                    <img class="w-full h-48 object-cover aspect-video" src="${fallbackImage}" alt="Article thumbnail" loading="lazy">
+            // Check if this should be premium content based on article characteristics
+            const shouldBePremium = article.title && (
+                article.title.toLowerCase().includes('premium') ||
+                article.title.toLowerCase().includes('subscriber') ||
+                article.title.toLowerCase().includes('exclusive') ||
+                (article.description && article.description.toLowerCase().includes('premium'))
+            );
+            
+            if (shouldBePremium) {
+                isPremiumContent = true;
+                imageHtml = `<a href="https://mail.latinometrics.com/upgrade" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="w-full h-48 bg-gradient-to-br from-latinometrics-primary via-latinometrics-primary to-latinometrics-primary/90 flex items-center justify-center relative overflow-hidden aspect-square hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 group cursor-pointer">
+                        <div class="absolute inset-0 opacity-10">
+                            <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100" height="100" fill="url(#grid)" />
+                            </svg>
+                        </div>
+                        <!-- Golden shimmer effect on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer-gold bg-[length:200%_100%] transition-opacity duration-300"></div>
+                        <div class="text-center text-white z-10 relative">
+                            <div class="text-4xl mb-3 transition-all duration-500 group-hover:animate-unlock-bounce">
+                                <span class="group-hover:hidden">🔒</span>
+                                <span class="hidden group-hover:inline">🔓</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Premium Content</h3>
+                            <p class="text-sm opacity-90 transition-all duration-300">Unlock exclusive charts & insights</p>
+                        </div>
+                    </div>
                 </a>`;
+            } else {
+                const fallbackImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjVGNUY1Ii8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2Ugbm90IGF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
+                imageHtml = `<a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="block">
+                        <img class="w-full h-48 object-cover aspect-video" src="${fallbackImage}" alt="Article thumbnail" loading="lazy">
+                    </a>`;
+            }
         }
         
         // Format date
