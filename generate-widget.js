@@ -191,9 +191,9 @@ function generateArticleHTML(articles) {
             <article class="bg-latinometrics-card rounded-xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" role="article">
                 ${imageHtml}
                 <div class="p-5 flex flex-col flex-1">
-                    <h3 class="font-lora font-semibold text-xl leading-tight text-latinometrics-text-background mb-2 line-clamp-2">${article.title || 'Untitled Article'}</h3>
+                    <h3 class="font-lora font-semibold text-xl leading-tight text-[#384F7F] mb-2 line-clamp-2">${article.title || 'Untitled Article'}</h3>
                     <p class="text-sm text-gray-600 mb-3 font-normal">${date}</p>
-                    <p class="text-sm leading-relaxed text-gray-700 mb-4 flex-1 line-clamp-3">${description}</p>
+                    <p class="text-sm leading-relaxed text-[#222E49] mb-4 flex-1 line-clamp-3">${description}</p>
                     <a href="${buttonHref}" target="_blank" rel="noopener noreferrer" class="${buttonClass}" aria-label="${isPremiumContent ? 'Subscribe to read premium content' : `Read full article: ${article.title}`}">
                         ${buttonText}
                     </a>
